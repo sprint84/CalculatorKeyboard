@@ -1,15 +1,14 @@
 # RFCalculatorKeyboard
 
-[![CI Status](http://img.shields.io/travis/Guilherme Moura/RFCalculatorKeyboard.svg?style=flat)](https://travis-ci.org/Guilherme Moura/RFCalculatorKeyboard)
-[![Version](https://img.shields.io/cocoapods/v/RFCalculatorKeyboard.svg?style=flat)](http://cocoapods.org/pods/RFCalculatorKeyboard)
-[![License](https://img.shields.io/cocoapods/l/RFCalculatorKeyboard.svg?style=flat)](http://cocoapods.org/pods/RFCalculatorKeyboard)
-[![Platform](https://img.shields.io/cocoapods/p/RFCalculatorKeyboard.svg?style=flat)](http://cocoapods.org/pods/RFCalculatorKeyboard)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, and open the 'Example/Example.xcproj' file.
 
 ## Requirements
+
+This component is written using Swift and Dynamic Frameworks, so iOS 8.x is required. However you may want to manually import the source files into your project, if you need to support 7.x.
 
 ## Installation
 
