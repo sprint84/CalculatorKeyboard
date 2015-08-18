@@ -109,6 +109,25 @@ class RFCalculatorProcessorTests: XCTestCase {
         XCTAssertEqual("67.50", output, "")
     }
     
+    func testComputeFinalValueMutipleTimes() {
+        processor.storeOperand(2)
+        processor.storeOperator(CalculatorKey.Add.rawValue)
+        processor.storeOperand(3)
+        var output = processor.computeFinalValue()
+        XCTAssertEqual("5", output, "")
+        output = processor.computeFinalValue()
+        XCTAssertEqual("5", output, "")
+    }
+    
+    func testClearAfterComputeFinalValue() {
+        processor.storeOperand(2)
+        processor.storeOperator(CalculatorKey.Add.rawValue)
+        processor.storeOperand(3)
+        processor.computeFinalValue()
+        var output = processor.storeOperand(8)
+        XCTAssertEqual("8", output, "")
+    }
+    
     func testClearAll() {
         processor.storeOperand(1)
         processor.storeOperand(5)

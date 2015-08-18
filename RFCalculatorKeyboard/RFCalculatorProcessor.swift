@@ -25,7 +25,7 @@ class RFCalculatorProcessor {
     
     func storeOperand(value: Int) -> String {
         var operand = "\(value)"
-        if currentOperand == "0" {
+        if currentOperand == "0" || storedOperator == .Equal {
             currentOperand = operand
         } else {
             currentOperand += operand
@@ -93,11 +93,10 @@ class RFCalculatorProcessor {
                 }
                 currentOperand = formatValue(output)
             }
-            previousOperand = resetOperand()
-            storedOperator = .Equal
-            return currentOperand
         }
-        return ""
+        previousOperand = resetOperand()
+        storedOperator = .Equal
+        return currentOperand
     }
     
     func clearAll() -> String {
