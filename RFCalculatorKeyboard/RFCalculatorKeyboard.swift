@@ -34,7 +34,7 @@ enum CalculatorKey: Int {
 }
 
 public class RFCalculatorKeyboard: UIView {
-    public var showDecimal = true {
+    public var showDecimal = false {
         didSet {
             processor.automaticDecimal = !showDecimal
             ajustLayout()
@@ -93,7 +93,8 @@ public class RFCalculatorKeyboard: UIView {
             var output = processor.clearAll()
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Delete.rawValue:
-            break
+            var output = processor.deleteLastDigit()
+            delegate?.calculator(self, didChangeValue: output)
         case (CalculatorKey.Multiply.rawValue)...(CalculatorKey.Add.rawValue):
             processor.storeOperator(sender.tag)
         case CalculatorKey.Equal.rawValue:

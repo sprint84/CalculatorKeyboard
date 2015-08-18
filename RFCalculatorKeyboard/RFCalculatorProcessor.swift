@@ -9,7 +9,7 @@
 import UIKit
 
 class RFCalculatorProcessor {
-    var automaticDecimal = false
+    var automaticDecimal = true
     var previousOperand: Double = 0.0
     var currentOperand: Double = 0.0
     var storedOperator: CalculatorKey?
@@ -34,7 +34,14 @@ class RFCalculatorProcessor {
             previousValue *= 10
         }
         currentOperand = previousValue + newDigit
-        return currentOperand
+        return floor(currentOperand * 100) / 100
+    }
+    
+    func deleteLastDigit() -> Double {
+        if automaticDecimal {
+            currentOperand /= 10
+        }
+        return floor(currentOperand * 100) / 100
     }
     
     func addDecimal() {
@@ -72,7 +79,7 @@ class RFCalculatorProcessor {
             previousOperand = 0.0
             storedOperator = .Equal
             decimalDigit = 0
-            return currentOperand
+            return floor(currentOperand * 100) / 100
         }
         return nil
     }
@@ -81,6 +88,6 @@ class RFCalculatorProcessor {
         storedOperator = nil
         currentOperand = 0.0
         previousOperand = 0.0
-        return currentOperand
+        return floor(currentOperand * 100) / 100
     }
 }
