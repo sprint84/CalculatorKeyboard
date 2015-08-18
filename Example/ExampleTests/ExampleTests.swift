@@ -1,6 +1,6 @@
 //
-//  RFCalcKeyboardTests.swift
-//  RFCalcKeyboardTests
+//  ExampleTests.swift
+//  ExampleTests
 //
 //  Created by Guilherme Moura on 8/17/15.
 //  Copyright (c) 2015 Reefactor, Inc. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class RFCalcKeyboardTests: XCTestCase {
+class ExampleTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
