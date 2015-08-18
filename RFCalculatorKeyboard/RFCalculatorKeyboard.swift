@@ -100,9 +100,7 @@ public class RFCalculatorKeyboard: UIView {
             processor.storeOperator(sender.tag)
         case CalculatorKey.Equal.rawValue:
             var output = processor.computeFinalValue()
-//            if let out = output {
-                delegate?.calculator(self, didChangeValue: output)
-//            }
+            delegate?.calculator(self, didChangeValue: output)
             break
         default:
             break

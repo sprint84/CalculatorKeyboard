@@ -25,7 +25,7 @@ class RFCalculatorProcessor {
     
     func storeOperand(value: Int) -> String {
         var operand = "\(value)"
-        if currentOperand == "0" || storedOperator == .Equal {
+        if currentOperand == "0" {
             currentOperand = operand
         } else {
             currentOperand += operand
@@ -43,14 +43,18 @@ class RFCalculatorProcessor {
     }
     
     func deleteLastDigit() -> String {
-        currentOperand.removeAtIndex(currentOperand.endIndex.predecessor())
-        
-        if automaticDecimal {
-            currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
-            if count(currentOperand) < 3 {
-                currentOperand.insert("0", atIndex: currentOperand.startIndex)
+        if count(currentOperand) > 1 {
+            currentOperand.removeAtIndex(currentOperand.endIndex.predecessor())
+            
+            if automaticDecimal {
+                currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
+                if count(currentOperand) < 3 {
+                    currentOperand.insert("0", atIndex: currentOperand.startIndex)
+                }
+                currentOperand.splice(decimalSymbol(), atIndex: advance(currentOperand.endIndex, -2))
             }
-            currentOperand.splice(decimalSymbol(), atIndex: advance(currentOperand.endIndex, -2))
+        } else {
+            currentOperand = resetOperand()
         }
         
         return currentOperand
@@ -65,38 +69,39 @@ class RFCalculatorProcessor {
     
     func storeOperator(rawValue: Int) -> String {
         if storedOperator != nil && storedOperator != .Equal {
-            computeFinalValue()
+            previousOperand = computeFinalValue()
+        } else {
+            previousOperand = currentOperand
         }
-        previousOperand = currentOperand
         currentOperand = resetOperand()
         storedOperator = CalculatorKey(rawValue: rawValue)!
         return previousOperand
     }
     
     func computeFinalValue() -> String {
-        if storedOperator != .Equal {
-            let value1 = (previousOperand as NSString).doubleValue
-            let value2 = (currentOperand as NSString).doubleValue
-            if let oper = storedOperator {
-                var output = 0.0
-                switch oper {
-                case .Multiply:
-                    output = value1 * value2
-                case .Divide:
-                    output = value1 / value2
-                case .Subtract:
-                    output = value1 - value2
-                case .Add:
-                    output = value1 + value2
-                default:
-                    break
-                }
-                currentOperand = formatValue(output)
+        let value1 = (previousOperand as NSString).doubleValue
+        let value2 = (currentOperand as NSString).doubleValue
+        if let oper = storedOperator {
+            var output = 0.0
+            switch oper {
+            case .Multiply:
+                output = value1 * value2
+            case .Divide:
+                output = value1 / value2
+            case .Subtract:
+                output = value1 - value2
+            case .Add:
+                output = value1 + value2
+            case .Equal:
+                return previousOperand
+            default:
+                break
             }
+            previousOperand = formatValue(output)
         }
-        previousOperand = resetOperand()
+        currentOperand = resetOperand()
         storedOperator = .Equal
-        return currentOperand
+        return previousOperand
     }
     
     func clearAll() -> String {
@@ -129,7 +134,7 @@ class RFCalculatorProcessor {
             return raw
         } else {
             var end = raw.endIndex.predecessor()
-            while raw[end] == "0" || String(raw[end]) == decimalSymbol() {
+            while end != raw.startIndex && (raw[end] == "0" || String(raw[end]) == decimalSymbol()) {
                 raw.removeAtIndex(end)
                 end = end.predecessor()
             }

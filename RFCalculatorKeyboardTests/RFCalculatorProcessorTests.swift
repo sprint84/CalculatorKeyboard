@@ -84,6 +84,16 @@ class RFCalculatorProcessorTests: XCTestCase {
         XCTAssertEqual("0.50", output, "")
     }
     
+    func testSubtractOperator() {
+        processor.storeOperand(2)
+        processor.storeOperand(0)
+        processor.storeOperator(CalculatorKey.Subtract.rawValue)
+        processor.storeOperand(2)
+        processor.storeOperand(0)
+        var output = processor.computeFinalValue()
+        XCTAssertEqual("0", output, "")
+    }
+    
     func testComputeFinalValue() {
         processor.storeOperand(2)
         processor.storeOperand(0)
@@ -124,8 +134,9 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.storeOperator(CalculatorKey.Add.rawValue)
         processor.storeOperand(3)
         processor.computeFinalValue()
-        var output = processor.storeOperand(8)
-        XCTAssertEqual("8", output, "")
+        processor.storeOperand(8)
+        var output = processor.storeOperand(3)
+        XCTAssertEqual("83", output, "")
     }
     
     func testClearAll() {
