@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol RFCalculatorDelegate: class {
-    func calculator(calculator: RFCalculatorKeyboard, didChangeValue value: Double)
+    func calculator(calculator: RFCalculatorKeyboard, didChangeValue value: String)
 }
 
 enum CalculatorKey: Int {
@@ -88,7 +88,8 @@ public class RFCalculatorKeyboard: UIView {
             var output = processor.storeOperand(sender.tag)
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Decimal.rawValue:
-            processor.addDecimal()
+            var output = processor.addDecimal()
+            delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Clear.rawValue:
             var output = processor.clearAll()
             delegate?.calculator(self, didChangeValue: output)
@@ -99,9 +100,9 @@ public class RFCalculatorKeyboard: UIView {
             processor.storeOperator(sender.tag)
         case CalculatorKey.Equal.rawValue:
             var output = processor.computeFinalValue()
-            if let out = output {
-                delegate?.calculator(self, didChangeValue: out)
-            }
+//            if let out = output {
+                delegate?.calculator(self, didChangeValue: output)
+//            }
             break
         default:
             break

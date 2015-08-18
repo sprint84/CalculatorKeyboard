@@ -18,7 +18,7 @@ class ViewController: UIViewController, RFCalculatorDelegate {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 256)
         let keyboard = RFCalculatorKeyboard(frame: frame)
         keyboard.delegate = self
-        keyboard.showDecimal = false
+        keyboard.showDecimal = true
         inputTextField.inputView = keyboard
     }
     
@@ -33,9 +33,8 @@ class ViewController: UIViewController, RFCalculatorDelegate {
     }
     
     // MARK: - RFCalculatorKeyboard delegate
-    func calculator(calculator: RFCalculatorKeyboard, didChangeValue value: Double) {
-//        let string = String(format: "%.2f", value)
-        inputTextField.text = "\(value)"
+    func calculator(calculator: RFCalculatorKeyboard, didChangeValue value: String) {
+        inputTextField.text = value
     }
 }
 

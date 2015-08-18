@@ -9,85 +9,132 @@
 import UIKit
 
 class RFCalculatorProcessor {
-    var automaticDecimal = true
-    var previousOperand: Double = 0.0
-    var currentOperand: Double = 0.0
+    var automaticDecimal = false {
+        didSet {
+            if automaticDecimal {
+                previousOperand = resetOperand()
+                currentOperand = resetOperand()
+            }
+        }
+    }
+    var previousOperand: String = "0"
+    var currentOperand: String = "0"
     var storedOperator: CalculatorKey?
     var decimalDigit = 0
     
-    func storeOperand(value: Int) -> Double {
-        if storedOperator == .Equal {
-            currentOperand = 0.0
-            storedOperator = nil
-            decimalDigit = 0
-        }
-        var newDigit = Double(value)
-        if automaticDecimal {
-            newDigit /= 100.0
-        } else if decimalDigit > 0 {
-            newDigit /= pow(10.0, Double(decimalDigit))
-            decimalDigit++
+    
+    func storeOperand(value: Int) -> String {
+        var operand = "\(value)"
+        if currentOperand == "0" {
+            currentOperand = operand
+        } else {
+            currentOperand += operand
         }
         
-        var previousValue = currentOperand
-        if automaticDecimal || decimalDigit == 0 {
-            previousValue *= 10
-        }
-        currentOperand = previousValue + newDigit
-        return floor(currentOperand * 100) / 100
-    }
-    
-    func deleteLastDigit() -> Double {
         if automaticDecimal {
-            currentOperand /= 10
+            currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
+            if currentOperand[currentOperand.startIndex] == "0" {
+                currentOperand.removeAtIndex(currentOperand.startIndex)
+            }
+            currentOperand.splice(decimalSymbol(), atIndex: advance(currentOperand.endIndex, -2))
         }
-        return floor(currentOperand * 100) / 100
+        
+        return currentOperand
     }
     
-    func addDecimal() {
-        decimalDigit = 1
+    func deleteLastDigit() -> String {
+        currentOperand.removeAtIndex(currentOperand.endIndex.predecessor())
+        
+        if automaticDecimal {
+            currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
+            if count(currentOperand) < 3 {
+                currentOperand.insert("0", atIndex: currentOperand.startIndex)
+            }
+            currentOperand.splice(decimalSymbol(), atIndex: advance(currentOperand.endIndex, -2))
+        }
+        
+        return currentOperand
     }
     
-    func storeOperator(rawValue: Int) {
+    func addDecimal() -> String {
+        if currentOperand.rangeOfString(decimalSymbol()) == nil {
+            currentOperand += decimalSymbol()
+        }
+        return currentOperand
+    }
+    
+    func storeOperator(rawValue: Int) -> String {
         if storedOperator != nil && storedOperator != .Equal {
             computeFinalValue()
         }
         previousOperand = currentOperand
-        currentOperand = 0.0
-        decimalDigit = 0
+        currentOperand = resetOperand()
         storedOperator = CalculatorKey(rawValue: rawValue)!
+        return previousOperand
     }
     
-    func computeFinalValue() -> Double? {
+    func computeFinalValue() -> String {
         if storedOperator != .Equal {
+            let value1 = (previousOperand as NSString).doubleValue
+            let value2 = (currentOperand as NSString).doubleValue
             if let oper = storedOperator {
                 var output = 0.0
                 switch oper {
                 case .Multiply:
-                    output = previousOperand * currentOperand
+                    output = value1 * value2
                 case .Divide:
-                    output = previousOperand / currentOperand
+                    output = value1 / value2
                 case .Subtract:
-                    output = previousOperand - currentOperand
+                    output = value1 - value2
                 case .Add:
-                    output = previousOperand + currentOperand
+                    output = value1 + value2
                 default:
                     break
                 }
-                currentOperand = output
+                currentOperand = formatValue(output)
             }
-            previousOperand = 0.0
+            previousOperand = resetOperand()
             storedOperator = .Equal
-            decimalDigit = 0
-            return floor(currentOperand * 100) / 100
+            return currentOperand
         }
-        return nil
+        return ""
     }
     
-    func clearAll() -> Double {
+    func clearAll() -> String {
         storedOperator = nil
-        currentOperand = 0.0
-        previousOperand = 0.0
-        return floor(currentOperand * 100) / 100
+        currentOperand = resetOperand()
+        previousOperand = resetOperand()
+        return currentOperand
+    }
+    
+    private func decimalSymbol() -> String {
+        return "."
+    }
+    
+    private func resetOperand() -> String {
+        var operand = "0"
+        if automaticDecimal {
+            operand = convertOperandToDecimals(operand)
+        }
+        return operand
+    }
+    
+    private func convertOperandToDecimals(operand: String) -> String {
+        return operand + ".00"
+    }
+    
+    private func formatValue(value: Double) -> String {
+        var raw = "\(value)"
+        if automaticDecimal {
+            raw = String(format: "%.2f", value)
+            return raw
+        } else {
+            var end = raw.endIndex.predecessor()
+            while raw[end] == "0" || String(raw[end]) == decimalSymbol() {
+                raw.removeAtIndex(end)
+                end = end.predecessor()
+            }
+            return raw
+        }
     }
 }

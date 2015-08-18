@@ -14,6 +14,9 @@
 		451722691B82B9D600D88E34 /* RFCalculatorKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451722661B82B9D600D88E34 /* RFCalculatorKeyboard.swift */; };
 		4517226A1B82B9D600D88E34 /* RFCalculatorProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451722671B82B9D600D88E34 /* RFCalculatorProcessor.swift */; };
 		4517226C1B82BA0900D88E34 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4517226B1B82BA0900D88E34 /* Images.xcassets */; };
+		455B66441B838F09004AF21E /* RFCalculatorProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455B66431B838F09004AF21E /* RFCalculatorProcessorTests.swift */; };
+		455B66451B838F11004AF21E /* RFCalculatorProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451722671B82B9D600D88E34 /* RFCalculatorProcessor.swift */; };
+		455B66461B839575004AF21E /* RFCalculatorKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451722661B82B9D600D88E34 /* RFCalculatorKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,7 @@
 		451722661B82B9D600D88E34 /* RFCalculatorKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFCalculatorKeyboard.swift; sourceTree = "<group>"; };
 		451722671B82B9D600D88E34 /* RFCalculatorProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFCalculatorProcessor.swift; sourceTree = "<group>"; };
 		4517226B1B82BA0900D88E34 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		455B66431B838F09004AF21E /* RFCalculatorProcessorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RFCalculatorProcessorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 			children = (
 				4517225B1B82B9AB00D88E34 /* RFCalculatorKeyboardTests.swift */,
 				451722591B82B9AB00D88E34 /* Supporting Files */,
+				455B66431B838F09004AF21E /* RFCalculatorProcessorTests.swift */,
 			);
 			path = RFCalculatorKeyboardTests;
 			sourceTree = "<group>";
@@ -233,6 +238,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455B66461B839575004AF21E /* RFCalculatorKeyboard.swift in Sources */,
+				455B66441B838F09004AF21E /* RFCalculatorProcessorTests.swift in Sources */,
+				455B66451B838F11004AF21E /* RFCalculatorProcessor.swift in Sources */,
 				4517225C1B82B9AB00D88E34 /* RFCalculatorKeyboardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
