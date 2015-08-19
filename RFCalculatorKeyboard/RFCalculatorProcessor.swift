@@ -70,6 +70,8 @@ class RFCalculatorProcessor {
     func storeOperator(rawValue: Int) -> String {
         if storedOperator != nil && storedOperator != .Equal {
             previousOperand = computeFinalValue()
+        } else if storedOperator == .Equal {
+            currentOperand = previousOperand
         } else {
             previousOperand = currentOperand
         }
@@ -134,11 +136,17 @@ class RFCalculatorProcessor {
             return raw
         } else {
             var end = raw.endIndex.predecessor()
-            while end != raw.startIndex && (raw[end] == "0" || String(raw[end]) == decimalSymbol()) {
+            var foundDecimal = false
+            while end != raw.startIndex && (raw[end] == "0" || isDecimal(raw[end])) && !foundDecimal {
+                foundDecimal = isDecimal(raw[end])
                 raw.removeAtIndex(end)
                 end = end.predecessor()
             }
             return raw
         }
+    }
+    
+    private func isDecimal(char: Character) -> Bool {
+        return String(char) == decimalSymbol()
     }
 }

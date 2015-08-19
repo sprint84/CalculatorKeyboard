@@ -97,7 +97,8 @@ public class RFCalculatorKeyboard: UIView {
             var output = processor.deleteLastDigit()
             delegate?.calculator(self, didChangeValue: output)
         case (CalculatorKey.Multiply.rawValue)...(CalculatorKey.Add.rawValue):
-            processor.storeOperator(sender.tag)
+            var output = processor.storeOperator(sender.tag)
+            delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Equal.rawValue:
             var output = processor.computeFinalValue()
             delegate?.calculator(self, didChangeValue: output)

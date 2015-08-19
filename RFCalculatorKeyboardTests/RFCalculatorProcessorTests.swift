@@ -98,10 +98,10 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.storeOperand(2)
         processor.storeOperand(0)
         processor.storeOperator(CalculatorKey.Add.rawValue)
-        processor.storeOperand(3)
-        processor.storeOperand(5)
+        processor.storeOperand(8)
+        processor.storeOperand(0)
         var output = processor.computeFinalValue()
-        XCTAssertEqual("55", output, "")
+        XCTAssertEqual("100", output, "")
     }
     
     func testComputeFinalValueDecimal() {
@@ -137,6 +137,36 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.storeOperand(8)
         var output = processor.storeOperand(3)
         XCTAssertEqual("83", output, "")
+        output = processor.storeOperator(CalculatorKey.Add.rawValue)
+        XCTAssertEqual("83", output, "")
+        processor.storeOperand(1)
+        processor.storeOperand(4)
+        output = processor.computeFinalValue()
+        XCTAssertEqual("97", output, "")
+    }
+    
+    func testOperatorAfterComputeFinalValue() {
+        processor.storeOperand(2)
+        processor.storeOperator(CalculatorKey.Add.rawValue)
+        processor.storeOperand(3)
+        processor.computeFinalValue()
+        var output = processor.storeOperator(CalculatorKey.Add.rawValue)
+        XCTAssertEqual("5", output, "")
+        processor.storeOperand(4)
+        output = processor.computeFinalValue()
+        XCTAssertEqual("9", output, "")
+    }
+    
+    func testConsecutiveOperations() {
+        processor.storeOperand(2)
+        processor.storeOperand(0)
+        processor.storeOperator(CalculatorKey.Add.rawValue)
+        processor.storeOperand(1)
+        processor.storeOperand(6)
+        processor.storeOperator(CalculatorKey.Add.rawValue)
+        processor.storeOperand(3)
+        var output = processor.computeFinalValue()
+        XCTAssertEqual("39", output, "")
     }
     
     func testClearAll() {
