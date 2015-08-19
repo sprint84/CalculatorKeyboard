@@ -1,5 +1,5 @@
 osx_image: xcode6.4
-xcode_sdk: iphonesimulator8.3
+xcode_sdk: iphonesimulator8.4
 language: objective-c
 xcode_project: RFCalculatorKeyboard.xcodeproj
 xcode_scheme: RFCalculatorKeyboardTests
