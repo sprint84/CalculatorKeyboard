@@ -1,3 +1,5 @@
+osx_image: xcode6.4
+xcode_sdk: iphonesimulator8.3
 language: objective-c
-script:
-  - xcodebuild build -scheme RFCalculatorKeyboard -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.0'
+xcode_project: RFCalculatorKeyboard.xcodeproj
+xcode_scheme: RFCalculatorKeyboardTests
