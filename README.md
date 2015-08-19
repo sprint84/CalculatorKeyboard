@@ -4,6 +4,8 @@
 [![Build Status](https://travis-ci.org/sprint84/RFCalculatorKeyboard.svg?branch=master)](https://travis-ci.org/sprint84/RFCalculatorKeyboard)
 [![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)]()
 
+![RFCalculatorKeyboard Screenshot](./Screenshot.png?raw=true)
+
 ## Usage
 
 To run the example project, clone the repo, and open the 'Example/Example.xcodeproj' file.
