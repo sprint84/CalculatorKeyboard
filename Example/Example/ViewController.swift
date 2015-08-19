@@ -15,7 +15,7 @@ class ViewController: UIViewController, RFCalculatorDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 256)
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 300)
         let keyboard = RFCalculatorKeyboard(frame: frame)
         keyboard.delegate = self
         keyboard.showDecimal = true
