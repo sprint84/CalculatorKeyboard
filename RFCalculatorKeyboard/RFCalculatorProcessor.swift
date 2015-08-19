@@ -31,6 +31,11 @@ class RFCalculatorProcessor {
             currentOperand += operand
         }
         
+        if storedOperator == .Equal {
+            currentOperand = operand
+            storedOperator = nil
+        }
+        
         if automaticDecimal {
             currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
             if currentOperand[currentOperand.startIndex] == "0" {
@@ -70,8 +75,8 @@ class RFCalculatorProcessor {
     func storeOperator(rawValue: Int) -> String {
         if storedOperator != nil && storedOperator != .Equal {
             previousOperand = computeFinalValue()
-        } else if storedOperator == .Equal {
-            currentOperand = previousOperand
+        } else if storedOperator == .Equal && rawValue == CalculatorKey.Equal.rawValue {
+            return currentOperand
         } else {
             previousOperand = currentOperand
         }
@@ -95,15 +100,15 @@ class RFCalculatorProcessor {
             case .Add:
                 output = value1 + value2
             case .Equal:
-                return previousOperand
+                return currentOperand
             default:
                 break
             }
-            previousOperand = formatValue(output)
+            currentOperand = formatValue(output)
         }
-        currentOperand = resetOperand()
+        previousOperand = resetOperand()
         storedOperator = .Equal
-        return previousOperand
+        return currentOperand
     }
     
     func clearAll() -> String {
