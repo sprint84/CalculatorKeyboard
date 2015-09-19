@@ -78,7 +78,7 @@ public class RFCalculatorKeyboard: UIView {
     
     @IBOutlet weak var zeroDistanceConstraint: NSLayoutConstraint!
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadXib()
     }
@@ -91,7 +91,7 @@ public class RFCalculatorKeyboard: UIView {
     private func loadXib() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         adjustLayout()
         addSubview(view)
     }
@@ -104,8 +104,7 @@ public class RFCalculatorKeyboard: UIView {
     }
     
     private func adjustLayout() {
-        let view = viewWithTag(CalculatorKey.Decimal.rawValue)
-        if let decimal = view {
+        if viewWithTag(CalculatorKey.Decimal.rawValue) != nil {
             let width = UIScreen.mainScreen().bounds.width / 4.0
             zeroDistanceConstraint.constant = showDecimal ? width + 2.0 : 1.0
             layoutIfNeeded()
@@ -137,25 +136,24 @@ public class RFCalculatorKeyboard: UIView {
     }
     
     @IBAction func buttonPressed(sender: UIButton) {
-        let key = CalculatorKey(rawValue: sender.tag)!
         switch (sender.tag) {
         case (CalculatorKey.Zero.rawValue)...(CalculatorKey.Nine.rawValue):
-            var output = processor.storeOperand(sender.tag-1)
+            let output = processor.storeOperand(sender.tag-1)
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Decimal.rawValue:
-            var output = processor.addDecimal()
+            let output = processor.addDecimal()
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Clear.rawValue:
-            var output = processor.clearAll()
+            let output = processor.clearAll()
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Delete.rawValue:
-            var output = processor.deleteLastDigit()
+            let output = processor.deleteLastDigit()
             delegate?.calculator(self, didChangeValue: output)
         case (CalculatorKey.Multiply.rawValue)...(CalculatorKey.Add.rawValue):
-            var output = processor.storeOperator(sender.tag)
+            let output = processor.storeOperator(sender.tag)
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Equal.rawValue:
-            var output = processor.computeFinalValue()
+            let output = processor.computeFinalValue()
             delegate?.calculator(self, didChangeValue: output)
             break
         default:

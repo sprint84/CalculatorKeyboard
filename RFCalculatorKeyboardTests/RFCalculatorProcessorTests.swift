@@ -50,7 +50,7 @@ class RFCalculatorProcessorTests: XCTestCase {
     func testDeleteDigit() {
         processor.storeOperand(3)
         processor.storeOperand(5)
-        var output = processor.deleteLastDigit()
+        let output = processor.deleteLastDigit()
         XCTAssertEqual("3", output, "")
     }
     
@@ -58,7 +58,7 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.automaticDecimal = true
         processor.storeOperand(3)
         processor.storeOperand(5)
-        var output = processor.deleteLastDigit()
+        let output = processor.deleteLastDigit()
         XCTAssertEqual("0.03", output, "")
     }
     
@@ -80,7 +80,7 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.storeOperand(0)
         processor.storeOperator(CalculatorKey.Add.rawValue)
         processor.storeOperand(5)
-        var output = processor.storeOperand(0)
+        let output = processor.storeOperand(0)
         XCTAssertEqual("0.50", output, "")
     }
     
@@ -90,7 +90,7 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.storeOperator(CalculatorKey.Subtract.rawValue)
         processor.storeOperand(2)
         processor.storeOperand(0)
-        var output = processor.computeFinalValue()
+        let output = processor.computeFinalValue()
         XCTAssertEqual("0", output, "")
     }
     
@@ -100,7 +100,7 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.storeOperator(CalculatorKey.Add.rawValue)
         processor.storeOperand(8)
         processor.storeOperand(0)
-        var output = processor.computeFinalValue()
+        let output = processor.computeFinalValue()
         XCTAssertEqual("100", output, "")
     }
     
@@ -115,7 +115,7 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.storeOperand(7)
         processor.storeOperand(0)
         processor.storeOperand(0)
-        var output = processor.computeFinalValue()
+        let output = processor.computeFinalValue()
         XCTAssertEqual("67.50", output, "")
     }
     
@@ -165,7 +165,7 @@ class RFCalculatorProcessorTests: XCTestCase {
         processor.storeOperand(6)
         processor.storeOperator(CalculatorKey.Add.rawValue)
         processor.storeOperand(3)
-        var output = processor.computeFinalValue()
+        let output = processor.computeFinalValue()
         XCTAssertEqual("39", output, "")
     }
     

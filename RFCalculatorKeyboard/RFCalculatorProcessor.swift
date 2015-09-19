@@ -24,7 +24,7 @@ class RFCalculatorProcessor {
     
     
     func storeOperand(value: Int) -> String {
-        var operand = "\(value)"
+        let operand = "\(value)"
         if currentOperand == "0" {
             currentOperand = operand
         } else {
@@ -41,22 +41,24 @@ class RFCalculatorProcessor {
             if currentOperand[currentOperand.startIndex] == "0" {
                 currentOperand.removeAtIndex(currentOperand.startIndex)
             }
-            currentOperand.splice(decimalSymbol(), atIndex: advance(currentOperand.endIndex, -2))
+            let char = decimalSymbol()[decimalSymbol().startIndex]
+            currentOperand.insert(char, atIndex: currentOperand.endIndex.advancedBy(-2))
         }
         
         return currentOperand
     }
     
     func deleteLastDigit() -> String {
-        if count(currentOperand) > 1 {
+        if currentOperand.characters.count > 1 {
             currentOperand.removeAtIndex(currentOperand.endIndex.predecessor())
             
             if automaticDecimal {
                 currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
-                if count(currentOperand) < 3 {
+                if currentOperand.characters.count < 3 {
                     currentOperand.insert("0", atIndex: currentOperand.startIndex)
                 }
-                currentOperand.splice(decimalSymbol(), atIndex: advance(currentOperand.endIndex, -2))
+                let char = decimalSymbol()[decimalSymbol().startIndex]
+                currentOperand.insert(char, atIndex: currentOperand.endIndex.advancedBy(-2))
             }
         } else {
             currentOperand = resetOperand()
