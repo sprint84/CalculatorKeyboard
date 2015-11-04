@@ -2,7 +2,7 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Build Status](https://travis-ci.org/sprint84/RFCalculatorKeyboard.svg?branch=master)](https://travis-ci.org/sprint84/RFCalculatorKeyboard)
-[![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)]()
+[![GitHub release](https://img.shields.io/badge/version-1.0.2-brightgreen.svg)]()
 
 ![RFCalculatorKeyboard Screenshot](./Screenshot.png?raw=true)
 
