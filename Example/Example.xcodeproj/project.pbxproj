@@ -14,6 +14,7 @@
 		451722861B82BAAA00D88E34 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451722841B82BAAA00D88E34 /* LaunchScreen.xib */; };
 		451722921B82BAAA00D88E34 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451722911B82BAAA00D88E34 /* ExampleTests.swift */; };
 		451722AF1B82BD9F00D88E34 /* RFCalculatorKeyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 451722AC1B82BD9500D88E34 /* RFCalculatorKeyboard.framework */; };
+		459CC66D1BE97D020012E4C2 /* RFCalculatorKeyboard.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 451722AC1B82BD9500D88E34 /* RFCalculatorKeyboard.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,28 @@
 			remoteGlobalIDString = 451722541B82B9AB00D88E34;
 			remoteInfo = RFCalculatorKeyboardTests;
 		};
+		459CC66A1BE97C9E0012E4C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 451722A61B82BD9500D88E34 /* RFCalculatorKeyboard.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 451722481B82B9AB00D88E34;
+			remoteInfo = RFCalculatorKeyboard;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		459CC66C1BE97CDF0012E4C2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				459CC66D1BE97D020012E4C2 /* RFCalculatorKeyboard.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		451722761B82BAAA00D88E34 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,10 +171,12 @@
 				451722721B82BAAA00D88E34 /* Sources */,
 				451722731B82BAAA00D88E34 /* Frameworks */,
 				451722741B82BAAA00D88E34 /* Resources */,
+				459CC66C1BE97CDF0012E4C2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				459CC66B1BE97C9E0012E4C2 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -285,6 +309,11 @@
 			target = 451722751B82BAAA00D88E34 /* Example */;
 			targetProxy = 4517228C1B82BAAA00D88E34 /* PBXContainerItemProxy */;
 		};
+		459CC66B1BE97C9E0012E4C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RFCalculatorKeyboard;
+			targetProxy = 459CC66A1BE97C9E0012E4C2 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -396,6 +425,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.reefactor.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -410,6 +440,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.reefactor.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

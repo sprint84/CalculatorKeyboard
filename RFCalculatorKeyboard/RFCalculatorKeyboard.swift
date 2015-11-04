@@ -110,11 +110,8 @@ public class RFCalculatorKeyboard: UIView {
             layoutIfNeeded()
         }
         
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let image = UIImage(named: "RF_black_background", inBundle: bundle, compatibleWithTraitCollection: nil)
         for var i = 1; i <= CalculatorKey.Decimal.rawValue; i++ {
             if let button = self.view.viewWithTag(i) as? UIButton {
-                button.setBackgroundImage(image, forState: .Normal)
                 button.tintColor = numbersBackgroundColor
                 button.setTitleColor(numbersTextColor, forState: .Normal)
             }
@@ -122,14 +119,13 @@ public class RFCalculatorKeyboard: UIView {
         
         for var i = CalculatorKey.Clear.rawValue; i <= CalculatorKey.Add.rawValue; i++ {
             if let button = self.view.viewWithTag(i) as? UIButton {
-                button.setBackgroundImage(image, forState: .Normal)
                 button.tintColor = operationsBackgroundColor
                 button.setTitleColor(operationsTextColor, forState: .Normal)
+                button.tintColor = operationsTextColor
             }
         }
         
         if let button = self.view.viewWithTag(CalculatorKey.Equal.rawValue) as? UIButton {
-            button.setBackgroundImage(image, forState: .Normal)
             button.tintColor = equalBackgroundColor
             button.setTitleColor(equalTextColor, forState: .Normal)
         }

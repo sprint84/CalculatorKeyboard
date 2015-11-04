@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RFCalculatorKeyboard" customModule="RFCalculatorKeyboard" customModuleProvider="target">
@@ -16,6 +17,7 @@
             <subviews>
                 <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVO-V4-2el">
                     <rect key="frame" x="231" y="291" width="114" height="72"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="." backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -27,6 +29,7 @@
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0M-sf-LJq">
                     <rect key="frame" x="0.0" y="291" width="345" height="72"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="0" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -38,6 +41,7 @@
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPX-9a-L5k">
                     <rect key="frame" x="0.0" y="218" width="114" height="72"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="1" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -49,6 +53,7 @@
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qc5-S2-ZMh">
                     <rect key="frame" x="115" y="218" width="115" height="72"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="2" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -60,6 +65,7 @@
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dr-ZX-ypf">
                     <rect key="frame" x="231" y="218" width="114" height="72"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="3" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -71,6 +77,7 @@
                 </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bou-vY-D6O">
                     <rect key="frame" x="0.0" y="146" width="114" height="71"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="4" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -82,6 +89,7 @@
                 </button>
                 <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpi-Ks-a0W">
                     <rect key="frame" x="115" y="146" width="115" height="71"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="5" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -93,6 +101,7 @@
                 </button>
                 <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mh-8s-NE7">
                     <rect key="frame" x="231" y="146" width="114" height="71"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="6" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -104,6 +113,7 @@
                 </button>
                 <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXK-c0-3AP">
                     <rect key="frame" x="0.0" y="73" width="114" height="72"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="7" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -115,6 +125,7 @@
                 </button>
                 <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMe-iP-D7g">
                     <rect key="frame" x="115" y="73" width="115" height="72"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="8" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -126,6 +137,7 @@
                 </button>
                 <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-Br-Wdo">
                     <rect key="frame" x="231" y="73" width="114" height="72"/>
+                    <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="9" backgroundImage="RF_light_button_background">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -137,7 +149,8 @@
                 </button>
                 <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nl8-lV-H5b">
                     <rect key="frame" x="0.0" y="0.0" width="114" height="72"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="AC" backgroundImage="RF_dark_button_background">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -148,8 +161,10 @@
                 </button>
                 <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da2-ak-xmw">
                     <rect key="frame" x="346" y="0.0" width="114" height="72"/>
-                    <fontDescription key="fontDescription" name="Farah" family="Farah" pointSize="16"/>
-                    <state key="normal" title="⌫" backgroundImage="RF_dark_button_background">
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="RF_backspace_icon" backgroundImage="RF_dark_button_background">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
@@ -157,20 +172,10 @@
                         <action selector="buttonPressed:" destination="-2" eventType="touchUpInside" id="698-o2-99m"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY3-7Y-cu0">
-                    <rect key="frame" x="231" y="0.0" width="114" height="72"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
-                    <state key="normal" title="×" backgroundImage="RF_dark_button_background">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="buttonPressed:" destination="-2" eventType="touchUpInside" id="uRV-FT-Axz"/>
-                    </connections>
-                </button>
                 <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2g-um-s42">
                     <rect key="frame" x="115" y="0.0" width="115" height="72"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="÷" backgroundImage="RF_dark_button_background">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -179,20 +184,10 @@
                         <action selector="buttonPressed:" destination="-2" eventType="touchUpInside" id="DZ2-Wn-hQc"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zp-Ql-AFP">
-                    <rect key="frame" x="346" y="73" width="114" height="72"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
-                    <state key="normal" title="−" backgroundImage="RF_dark_button_background">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="buttonPressed:" destination="-2" eventType="touchUpInside" id="1Ch-dP-k11"/>
-                    </connections>
-                </button>
                 <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5D-4f-B2c">
                     <rect key="frame" x="346" y="146" width="114" height="71"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="+" backgroundImage="RF_dark_button_background">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -203,7 +198,8 @@
                 </button>
                 <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01X-pX-xGE">
                     <rect key="frame" x="346" y="218" width="114" height="145"/>
-                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="=" backgroundImage="RF_orange_button_background">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -212,7 +208,32 @@
                         <action selector="buttonPressed:" destination="-2" eventType="touchUpInside" id="vVQ-xC-g3O"/>
                     </connections>
                 </button>
+                <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY3-7Y-cu0">
+                    <rect key="frame" x="231" y="0.0" width="114" height="72"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="×" backgroundImage="RF_dark_button_background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonPressed:" destination="-2" eventType="touchUpInside" id="uRV-FT-Axz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zp-Ql-AFP">
+                    <rect key="frame" x="346" y="73" width="114" height="72"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="−" backgroundImage="RF_dark_button_background">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonPressed:" destination="-2" eventType="touchUpInside" id="1Ch-dP-k11"/>
+                    </connections>
+                </button>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="bpi-Ks-a0W" firstAttribute="top" secondItem="mMe-iP-D7g" secondAttribute="bottom" constant="1" id="0bz-7f-YGf"/>
@@ -299,6 +320,7 @@
         </view>
     </objects>
     <resources>
+        <image name="RF_backspace_icon" width="26" height="18"/>
         <image name="RF_dark_button_background" width="1" height="1"/>
         <image name="RF_light_button_background" width="1" height="1"/>
         <image name="RF_orange_button_background" width="1" height="1"/>
