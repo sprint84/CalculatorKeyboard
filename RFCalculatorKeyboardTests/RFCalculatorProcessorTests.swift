@@ -145,6 +145,27 @@ class RFCalculatorProcessorTests: XCTestCase {
         XCTAssertEqual("97", output, "")
     }
     
+    func testDigitAfterComputeFinalValue() {
+        processor.automaticDecimal = true
+        processor.storeOperand(2)
+        processor.storeOperand(0)
+        processor.storeOperand(5)
+        processor.storeOperand(0)
+        processor.storeOperator(CalculatorKey.Add.rawValue)
+        processor.storeOperand(4)
+        processor.storeOperand(7)
+        processor.storeOperand(0)
+        processor.storeOperand(0)
+        var output = processor.computeFinalValue()
+        XCTAssertEqual("67.50", output, "")
+        processor.storeOperand(4)
+        processor.storeOperand(7)
+        processor.storeOperand(0)
+        processor.storeOperand(0)
+        output = processor.computeFinalValue()
+        XCTAssertEqual("47.00", output, "")
+    }
+    
     func testOperatorAfterComputeFinalValue() {
         processor.storeOperand(2)
         processor.storeOperator(CalculatorKey.Add.rawValue)

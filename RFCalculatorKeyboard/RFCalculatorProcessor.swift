@@ -32,7 +32,11 @@ class RFCalculatorProcessor {
         }
         
         if storedOperator == .Equal {
-            currentOperand = operand
+            if automaticDecimal {
+                currentOperand = previousOperand + operand
+            } else {
+                currentOperand = operand
+            }
             storedOperator = nil
         }
         
