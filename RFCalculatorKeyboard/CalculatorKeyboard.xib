@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
@@ -20,7 +19,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="." backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -28,11 +27,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0M-sf-LJq">
-                    <rect key="frame" x="0.0" y="291" width="345" height="72"/>
+                    <rect key="frame" x="0.0" y="291" width="230" height="72"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="0" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -44,7 +43,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="1" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -56,7 +55,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="2" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -68,7 +67,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="3" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -80,7 +79,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="4" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -92,7 +91,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="5" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -104,7 +103,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="6" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -116,7 +115,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="7" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -128,7 +127,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="8" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -140,7 +139,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                     <state key="normal" title="9" backgroundImage="RF_light_button_background">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -298,7 +297,7 @@
                 <constraint firstAttribute="trailing" secondItem="01X-pX-xGE" secondAttribute="trailing" id="rA4-vP-KKl"/>
                 <constraint firstItem="da2-ak-xmw" firstAttribute="leading" secondItem="hY3-7Y-cu0" secondAttribute="trailing" constant="1" id="rPp-DK-9Fd"/>
                 <constraint firstItem="7dr-ZX-ypf" firstAttribute="width" secondItem="Qc5-S2-ZMh" secondAttribute="width" id="rbS-hg-9CF"/>
-                <constraint firstItem="01X-pX-xGE" firstAttribute="leading" secondItem="T0M-sf-LJq" secondAttribute="trailing" constant="1" id="ryQ-66-941"/>
+                <constraint firstItem="01X-pX-xGE" firstAttribute="leading" secondItem="T0M-sf-LJq" secondAttribute="trailing" constant="116" id="ryQ-66-941"/>
                 <constraint firstItem="mMe-iP-D7g" firstAttribute="height" secondItem="vXK-c0-3AP" secondAttribute="height" id="sGV-La-Zr3"/>
                 <constraint firstItem="NPX-9a-L5k" firstAttribute="width" secondItem="Qc5-S2-ZMh" secondAttribute="width" id="uMm-jH-afD"/>
                 <constraint firstItem="mMe-iP-D7g" firstAttribute="width" secondItem="YNd-Br-Wdo" secondAttribute="width" id="ujB-OC-YNe"/>

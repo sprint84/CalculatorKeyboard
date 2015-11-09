@@ -66,7 +66,7 @@ public class RFCalculatorKeyboard: UIView {
         }
     }
     
-    public var showDecimal = false {
+    public var showDecimal = true {
         didSet {
             processor.automaticDecimal = !showDecimal
             adjustLayout()
@@ -78,14 +78,19 @@ public class RFCalculatorKeyboard: UIView {
     
     @IBOutlet weak var zeroDistanceConstraint: NSLayoutConstraint!
     
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadXib()
     }
     
-    override public init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
+    }
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        adjustLayout()
     }
     
     private func loadXib() {
@@ -100,14 +105,13 @@ public class RFCalculatorKeyboard: UIView {
         let bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: "CalculatorKeyboard", bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        adjustButtonConstraint()
         return view
     }
     
     private func adjustLayout() {
         if viewWithTag(CalculatorKey.Decimal.rawValue) != nil {
-            let width = UIScreen.mainScreen().bounds.width / 4.0
-            zeroDistanceConstraint.constant = showDecimal ? width + 2.0 : 1.0
-            layoutIfNeeded()
+            adjustButtonConstraint()
         }
         
         for var i = 1; i <= CalculatorKey.Decimal.rawValue; i++ {
@@ -129,6 +133,12 @@ public class RFCalculatorKeyboard: UIView {
             button.tintColor = equalBackgroundColor
             button.setTitleColor(equalTextColor, forState: .Normal)
         }
+    }
+    
+    private func adjustButtonConstraint() {
+        let width = UIScreen.mainScreen().bounds.width / 4.0
+        zeroDistanceConstraint.constant = showDecimal ? width + 2.0 : 1.0
+        layoutIfNeeded()
     }
     
     @IBAction func buttonPressed(sender: UIButton) {

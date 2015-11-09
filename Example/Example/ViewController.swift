@@ -18,7 +18,7 @@ class ViewController: UIViewController, RFCalculatorDelegate {
         let frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 300)
         let keyboard = RFCalculatorKeyboard(frame: frame)
         keyboard.delegate = self
-        keyboard.showDecimal = false
+        keyboard.showDecimal = true
         inputTextField.inputView = keyboard
     }
     
@@ -29,7 +29,6 @@ class ViewController: UIViewController, RFCalculatorDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - RFCalculatorKeyboard delegate
