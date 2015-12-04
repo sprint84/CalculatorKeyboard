@@ -1,6 +1,6 @@
-# RFCalculatorKeyboard [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Build Status](https://travis-ci.org/sprint84/RFCalculatorKeyboard.svg?branch=master)](https://travis-ci.org/sprint84/RFCalculatorKeyboard) [![GitHub release](https://img.shields.io/badge/version-1.0.2-brightgreen.svg)]()
+# CalculatorKeyboard [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Build Status](https://travis-ci.org/sprint84/CalculatorKeyboard.svg?branch=master)](https://travis-ci.org/sprint84/CalculatorKeyboard) [![GitHub release](https://img.shields.io/badge/version-1.0.3-brightgreen.svg)]()
 
-![RFCalculatorKeyboard Screenshot](./Screenshot.png?raw=true)
+![CalculatorKeyboard Screenshot](./Screenshot.png?raw=true)
 
 ## Usage
 
@@ -16,7 +16,7 @@ RFCalculatorKeyboard is available through [Carthage](https://github.com/Carthage
 it, simply add the following line to your Cartfile:
 
 ```ruby
-github "sprint84/RFCalculatorKeyboard" ~> 1.0
+github "sprint84/CalculatorKeyboard" ~> 1.0
 ```
 
 ###Installing Carthage
@@ -29,30 +29,30 @@ For further details, please visit the [Carthage Github page](https://github.com/
 
 ##Usage
 
-Using RFCalculatorKeyboard is quite simple. First you need to import the Framework
+Using `CalculatorKeyboard` is quite simple. First you need to import the Framework
 
 ```swift
-import RFCalculatorKeyboard
+import CalculatorKeyboard
 ```
 
 Then instantiate the view and apply it to a text input (`UITextField` or `UITextView`).
 
 ```swift
-let calcInputView = RFCalculatorKeyboard(frame: frame)
+let calcInputView = CalculatorKeyboard(frame: frame)
 calcInputView.delegate = self
 textField.inputView = calcInputView
 ```
 
-RFCalculatorKeyboard uses a delegate to report back the values. That way, you have the flexibility to format the text the way you want before displaying to the user.
+`CalculatorKeyboard` uses a delegate to report back the values. That way, you have the flexibility to format the text the way you want before displaying to the user.
 
 ```swift
-func calculator(calculator: RFCalculatorKeyboard, didChangeValue value: String) {
+func calculator(calculator: CalculatorKeyboard, didChangeValue value: String) {
 	valueTextField.text = value
 }
 ```
 
 ### Customization
-RFCalculatorKeyboard supports some layout customizations.
+`CalculatorKeyboard` supports some layout customizations.
 
 ```swift
 // Show/Hide decimal button in keyboard. When hidden, the decimal input begin from the least
@@ -73,4 +73,4 @@ Reefactor, Inc., reefactor@gmail.com
 
 ## License
 
-RFCalculatorKeyboard is available under the MIT license. See the LICENSE file for more info.
+CalculatorKeyboard is available under the MIT license. See the LICENSE file for more info.
