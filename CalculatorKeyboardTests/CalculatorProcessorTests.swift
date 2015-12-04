@@ -1,5 +1,5 @@
 //
-//  RFCalculatorProcessorTests.swift
+//  CalculatorProcessorTests.swift
 //  RFCalculatorKeyboard
 //
 //  Created by Guilherme Moura on 8/18/15.
@@ -8,13 +8,14 @@
 
 import UIKit
 import XCTest
+@testable import CalculatorKeyboard
 
-class RFCalculatorProcessorTests: XCTestCase {
-    var processor: RFCalculatorProcessor!
+class CalculatorProcessorTests: XCTestCase {
+    var processor: CalculatorProcessor!
     
     override func setUp() {
         super.setUp()
-        processor = RFCalculatorProcessor()
+        processor = CalculatorProcessor()
     }
     
     override func tearDown() {

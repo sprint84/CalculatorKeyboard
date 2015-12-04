@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:RFCalculatorKeyboard.xcodeproj">
+      location = "self:CalculatorKeyboard.xcodeproj">
    </FileRef>
 </Workspace>

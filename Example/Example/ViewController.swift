@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import RFCalculatorKeyboard
+import CalculatorKeyboard
 
-class ViewController: UIViewController, RFCalculatorDelegate {
+class ViewController: UIViewController, CalculatorDelegate {
     
     @IBOutlet weak var inputTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 300)
-        let keyboard = RFCalculatorKeyboard(frame: frame)
+        let keyboard = CalculatorKeyboard(frame: frame)
         keyboard.delegate = self
         keyboard.showDecimal = true
         inputTextField.inputView = keyboard
@@ -32,7 +32,7 @@ class ViewController: UIViewController, RFCalculatorDelegate {
     }
     
     // MARK: - RFCalculatorKeyboard delegate
-    func calculator(calculator: RFCalculatorKeyboard, didChangeValue value: String) {
+    func calculator(calculator: CalculatorKeyboard, didChangeValue value: String) {
         inputTextField.text = value
     }
 }

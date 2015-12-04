@@ -1,6 +1,6 @@
 //
-//  RFCalculatorKeyboard.swift
-//  RFCalculatorKeyboard
+//  CalculatorKeyboard.swift
+//  CalculatorKeyboard
 //
 //  Created by Guilherme Moura on 8/15/15.
 //  Copyright (c) 2015 Reefactor, Inc. All rights reserved.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-public protocol RFCalculatorDelegate: class {
-    func calculator(calculator: RFCalculatorKeyboard, didChangeValue value: String)
+public protocol CalculatorDelegate: class {
+    func calculator(calculator: CalculatorKeyboard, didChangeValue value: String)
 }
 
 enum CalculatorKey: Int {
@@ -33,8 +33,8 @@ enum CalculatorKey: Int {
     case Equal
 }
 
-public class RFCalculatorKeyboard: UIView {
-    public weak var delegate: RFCalculatorDelegate?
+public class CalculatorKeyboard: UIView {
+    public weak var delegate: CalculatorDelegate?
     public var numbersBackgroundColor = UIColor(white: 0.97, alpha: 1.0) {
         didSet {
             adjustLayout()
@@ -74,7 +74,7 @@ public class RFCalculatorKeyboard: UIView {
     }
     
     var view: UIView!
-    private var processor = RFCalculatorProcessor()
+    private var processor = CalculatorProcessor()
     
     @IBOutlet weak var zeroDistanceConstraint: NSLayoutConstraint!
     

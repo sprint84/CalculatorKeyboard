@@ -1,5 +1,5 @@
 //
-//  RFCalculatorProcessor.swift
+//  CalculatorProcessor.swift
 //  Pods
 //
 //  Created by Guilherme Moura on 8/17/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RFCalculatorProcessor {
+class CalculatorProcessor {
     var automaticDecimal = false {
         didSet {
             if automaticDecimal {
