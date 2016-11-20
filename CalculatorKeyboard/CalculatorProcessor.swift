@@ -23,7 +23,7 @@ class CalculatorProcessor {
     var decimalDigit = 0
     
     
-    func storeOperand(value: Int) -> String {
+    func storeOperand(_ value: Int) -> String {
         let operand = "\(value)"
         if currentOperand == "0" {
             currentOperand = operand
@@ -31,7 +31,7 @@ class CalculatorProcessor {
             currentOperand += operand
         }
         
-        if storedOperator == .Equal {
+        if storedOperator == .equal {
             if automaticDecimal {
                 currentOperand = previousOperand + operand
             } else {
@@ -41,12 +41,12 @@ class CalculatorProcessor {
         }
         
         if automaticDecimal {
-            currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
+            currentOperand = currentOperand.replacingOccurrences(of: decimalSymbol(), with: "")
             if currentOperand[currentOperand.startIndex] == "0" {
-                currentOperand.removeAtIndex(currentOperand.startIndex)
+                currentOperand.remove(at: currentOperand.startIndex)
             }
             let char = decimalSymbol()[decimalSymbol().startIndex]
-            currentOperand.insert(char, atIndex: currentOperand.endIndex.advancedBy(-2))
+            currentOperand.insert(char, at: currentOperand.characters.index(currentOperand.endIndex, offsetBy: -2))
         }
         
         return currentOperand
@@ -54,15 +54,15 @@ class CalculatorProcessor {
     
     func deleteLastDigit() -> String {
         if currentOperand.characters.count > 1 {
-            currentOperand.removeAtIndex(currentOperand.endIndex.predecessor())
+            currentOperand.remove(at: currentOperand.characters.index(before: currentOperand.endIndex))
             
             if automaticDecimal {
-                currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
+                currentOperand = currentOperand.replacingOccurrences(of: decimalSymbol(), with: "")
                 if currentOperand.characters.count < 3 {
-                    currentOperand.insert("0", atIndex: currentOperand.startIndex)
+                    currentOperand.insert("0", at: currentOperand.startIndex)
                 }
                 let char = decimalSymbol()[decimalSymbol().startIndex]
-                currentOperand.insert(char, atIndex: currentOperand.endIndex.advancedBy(-2))
+                currentOperand.insert(char, at: currentOperand.characters.index(currentOperand.endIndex, offsetBy: -2))
             }
         } else {
             currentOperand = resetOperand()
@@ -72,16 +72,16 @@ class CalculatorProcessor {
     }
     
     func addDecimal() -> String {
-        if currentOperand.rangeOfString(decimalSymbol()) == nil {
+        if currentOperand.range(of: decimalSymbol()) == nil {
             currentOperand += decimalSymbol()
         }
         return currentOperand
     }
     
-    func storeOperator(rawValue: Int) -> String {
-        if storedOperator != nil && storedOperator != .Equal {
+    func storeOperator(_ rawValue: Int) -> String {
+        if storedOperator != nil && storedOperator != .equal {
             previousOperand = computeFinalValue()
-        } else if storedOperator == .Equal && rawValue == CalculatorKey.Equal.rawValue {
+        } else if storedOperator == .equal && rawValue == CalculatorKey.equal.rawValue {
             return currentOperand
         } else {
             previousOperand = currentOperand
@@ -97,15 +97,15 @@ class CalculatorProcessor {
         if let oper = storedOperator {
             var output = 0.0
             switch oper {
-            case .Multiply:
+            case .multiply:
                 output = value1 * value2
-            case .Divide:
+            case .divide:
                 output = value1 / value2
-            case .Subtract:
+            case .subtract:
                 output = value1 - value2
-            case .Add:
+            case .add:
                 output = value1 + value2
-            case .Equal:
+            case .equal:
                 return currentOperand
             default:
                 break
@@ -113,7 +113,7 @@ class CalculatorProcessor {
             currentOperand = formatValue(output)
         }
         previousOperand = resetOperand()
-        storedOperator = .Equal
+        storedOperator = .equal
         return currentOperand
     }
     
@@ -124,11 +124,11 @@ class CalculatorProcessor {
         return currentOperand
     }
     
-    private func decimalSymbol() -> String {
+    fileprivate func decimalSymbol() -> String {
         return "."
     }
     
-    private func resetOperand() -> String {
+    fileprivate func resetOperand() -> String {
         var operand = "0"
         if automaticDecimal {
             operand = convertOperandToDecimals(operand)
@@ -136,28 +136,28 @@ class CalculatorProcessor {
         return operand
     }
     
-    private func convertOperandToDecimals(operand: String) -> String {
+    fileprivate func convertOperandToDecimals(_ operand: String) -> String {
         return operand + ".00"
     }
     
-    private func formatValue(value: Double) -> String {
+    fileprivate func formatValue(_ value: Double) -> String {
         var raw = "\(value)"
         if automaticDecimal {
             raw = String(format: "%.2f", value)
             return raw
         } else {
-            var end = raw.endIndex.predecessor()
+            var end = raw.characters.index(before: raw.endIndex)
             var foundDecimal = false
             while end != raw.startIndex && (raw[end] == "0" || isDecimal(raw[end])) && !foundDecimal {
                 foundDecimal = isDecimal(raw[end])
-                raw.removeAtIndex(end)
-                end = end.predecessor()
+                raw.remove(at: end)
+                end = raw.characters.index(before: end)
             }
             return raw
         }
     }
     
-    private func isDecimal(char: Character) -> Bool {
+    fileprivate func isDecimal(_ char: Character) -> Bool {
         return String(char) == decimalSymbol()
     }
 }
