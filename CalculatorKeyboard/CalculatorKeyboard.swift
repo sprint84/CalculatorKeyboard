@@ -13,7 +13,8 @@ public protocol CalculatorDelegate: class {
 }
 
 enum CalculatorKey: Int {
-    case Zero = 1
+    case Sign
+    case Zero
     case One
     case Two
     case Three
@@ -147,8 +148,11 @@ public class CalculatorKeyboard: UIView {
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         switch (sender.tag) {
+        case CalculatorKey.Sign.rawValue:
+            let output = processor.toggleSign()
+            delegate?.calculator(self, didChangeValue: output)
         case (CalculatorKey.Zero.rawValue)...(CalculatorKey.Nine.rawValue):
-            let output = processor.storeOperand(value: sender.tag-1)
+            let output = processor.storeOperand(value: sender.tag - 1)
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Decimal.rawValue:
             let output = processor.addDecimal()

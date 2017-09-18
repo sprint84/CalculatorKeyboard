@@ -23,6 +23,18 @@ class CalculatorProcessor {
     var decimalDigit = 0
     
     
+    func toggleSign() -> String {
+        if currentOperand != "0" {
+            if currentOperand.starts(with: "-") {
+                let startIndex = currentOperand.index(currentOperand.startIndex, offsetBy: 1)
+                currentOperand = String(currentOperand[startIndex...])
+            } else {
+                currentOperand = "-" + currentOperand
+            }
+        }
+        return currentOperand
+    }
+    
     func storeOperand(value: Int) -> String {
         let operand = "\(value)"
         if currentOperand == "0" {
