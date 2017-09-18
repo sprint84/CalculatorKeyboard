@@ -110,15 +110,10 @@ public class CalculatorKeyboard: UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "CalculatorKeyboard", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        adjustButtonConstraint()
         return view
     }
     
     private func adjustLayout() {
-        if viewWithTag(CalculatorKey.Decimal.rawValue) != nil {
-            adjustButtonConstraint()
-        }
-        
         for i in 1...CalculatorKey.Decimal.rawValue {
             if let button = self.view.viewWithTag(i) as? UIButton {
                 button.tintColor = numbersBackgroundColor
@@ -138,12 +133,6 @@ public class CalculatorKeyboard: UIView {
             button.tintColor = equalBackgroundColor
             button.setTitleColor(equalTextColor, for: .normal)
         }
-    }
-    
-    private func adjustButtonConstraint() {
-        let width = UIScreen.main.bounds.width / 4.0
-        zeroDistanceConstraint.constant = showDecimal ? width + 2.0 : 1.0
-        layoutIfNeeded()
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
