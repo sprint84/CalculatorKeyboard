@@ -9,11 +9,12 @@
 import UIKit
 
 public protocol CalculatorDelegate: class {
-    func calculator(calculator: CalculatorKeyboard, didChangeValue value: String)
+    func calculator(_: CalculatorKeyboard, didChangeValue value: String)
 }
 
 enum CalculatorKey: Int {
-    case Zero = 1
+    case Sign
+    case Zero
     case One
     case Two
     case Three
@@ -40,7 +41,7 @@ public class CalculatorKeyboard: UIView {
             adjustLayout()
         }
     }
-    public var numbersTextColor = UIColor.blackColor() {
+    public var numbersTextColor = UIColor.black {
         didSet {
             adjustLayout()
         }
@@ -50,7 +51,7 @@ public class CalculatorKeyboard: UIView {
             adjustLayout()
         }
     }
-    public var operationsTextColor = UIColor.whiteColor() {
+    public var operationsTextColor = UIColor.white {
         didSet {
             adjustLayout()
         }
@@ -60,7 +61,7 @@ public class CalculatorKeyboard: UIView {
             adjustLayout()
         }
     }
-    public var equalTextColor = UIColor.whiteColor() {
+    public var equalTextColor = UIColor.white {
         didSet {
             adjustLayout()
         }
@@ -88,6 +89,10 @@ public class CalculatorKeyboard: UIView {
         loadXib()
     }
     
+    convenience init() {
+        self.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
+    }
+    
     public override func awakeFromNib() {
         super.awakeFromNib()
         adjustLayout()
@@ -96,55 +101,47 @@ public class CalculatorKeyboard: UIView {
     private func loadXib() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         adjustLayout()
         addSubview(view)
     }
     
     private func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "CalculatorKeyboard", bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
-        adjustButtonConstraint()
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }
     
     private func adjustLayout() {
-        if viewWithTag(CalculatorKey.Decimal.rawValue) != nil {
-            adjustButtonConstraint()
-        }
-        
-        for var i = 1; i <= CalculatorKey.Decimal.rawValue; i++ {
+        for i in 1...CalculatorKey.Decimal.rawValue {
             if let button = self.view.viewWithTag(i) as? UIButton {
                 button.tintColor = numbersBackgroundColor
-                button.setTitleColor(numbersTextColor, forState: .Normal)
+                button.setTitleColor(numbersTextColor, for: .normal)
             }
         }
         
-        for var i = CalculatorKey.Clear.rawValue; i <= CalculatorKey.Add.rawValue; i++ {
+        for i in CalculatorKey.Clear.rawValue...CalculatorKey.Add.rawValue {
             if let button = self.view.viewWithTag(i) as? UIButton {
                 button.tintColor = operationsBackgroundColor
-                button.setTitleColor(operationsTextColor, forState: .Normal)
+                button.setTitleColor(operationsTextColor, for: .normal)
                 button.tintColor = operationsTextColor
             }
         }
         
         if let button = self.view.viewWithTag(CalculatorKey.Equal.rawValue) as? UIButton {
             button.tintColor = equalBackgroundColor
-            button.setTitleColor(equalTextColor, forState: .Normal)
+            button.setTitleColor(equalTextColor, for: .normal)
         }
     }
     
-    private func adjustButtonConstraint() {
-        let width = UIScreen.mainScreen().bounds.width / 4.0
-        zeroDistanceConstraint.constant = showDecimal ? width + 2.0 : 1.0
-        layoutIfNeeded()
-    }
-    
-    @IBAction func buttonPressed(sender: UIButton) {
+    @IBAction func buttonPressed(_ sender: UIButton) {
         switch (sender.tag) {
+        case CalculatorKey.Sign.rawValue:
+            let output = processor.toggleSign()
+            delegate?.calculator(self, didChangeValue: output)
         case (CalculatorKey.Zero.rawValue)...(CalculatorKey.Nine.rawValue):
-            let output = processor.storeOperand(sender.tag-1)
+            let output = processor.storeOperand(value: sender.tag - 1)
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Decimal.rawValue:
             let output = processor.addDecimal()
@@ -156,7 +153,7 @@ public class CalculatorKeyboard: UIView {
             let output = processor.deleteLastDigit()
             delegate?.calculator(self, didChangeValue: output)
         case (CalculatorKey.Multiply.rawValue)...(CalculatorKey.Add.rawValue):
-            let output = processor.storeOperator(sender.tag)
+            let output = processor.storeOperator(rawValue: sender.tag)
             delegate?.calculator(self, didChangeValue: output)
         case CalculatorKey.Equal.rawValue:
             let output = processor.computeFinalValue()

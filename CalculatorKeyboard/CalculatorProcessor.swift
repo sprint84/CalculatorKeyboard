@@ -23,6 +23,18 @@ class CalculatorProcessor {
     var decimalDigit = 0
     
     
+    func toggleSign() -> String {
+        if currentOperand != "0" {
+            if currentOperand.starts(with: "-") {
+                let startIndex = currentOperand.index(currentOperand.startIndex, offsetBy: 1)
+                currentOperand = String(currentOperand[startIndex...])
+            } else {
+                currentOperand = "-" + currentOperand
+            }
+        }
+        return currentOperand
+    }
+    
     func storeOperand(value: Int) -> String {
         let operand = "\(value)"
         if currentOperand == "0" {
@@ -41,12 +53,12 @@ class CalculatorProcessor {
         }
         
         if automaticDecimal {
-            currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
+            currentOperand = currentOperand.replacingOccurrences(of: decimalSymbol(), with: "")
             if currentOperand[currentOperand.startIndex] == "0" {
-                currentOperand.removeAtIndex(currentOperand.startIndex)
+                currentOperand.remove(at: currentOperand.startIndex)
             }
             let char = decimalSymbol()[decimalSymbol().startIndex]
-            currentOperand.insert(char, atIndex: currentOperand.endIndex.advancedBy(-2))
+            currentOperand.insert(char, at: currentOperand.index(currentOperand.startIndex, offsetBy: -2))
         }
         
         return currentOperand
@@ -54,15 +66,15 @@ class CalculatorProcessor {
     
     func deleteLastDigit() -> String {
         if currentOperand.characters.count > 1 {
-            currentOperand.removeAtIndex(currentOperand.endIndex.predecessor())
+            currentOperand.remove(at: currentOperand.index(before: currentOperand.endIndex))
             
             if automaticDecimal {
-                currentOperand = currentOperand.stringByReplacingOccurrencesOfString(decimalSymbol(), withString: "")
+                currentOperand = currentOperand.replacingOccurrences(of: decimalSymbol(), with: "")
                 if currentOperand.characters.count < 3 {
-                    currentOperand.insert("0", atIndex: currentOperand.startIndex)
+                    currentOperand.insert("0", at: currentOperand.startIndex)
                 }
                 let char = decimalSymbol()[decimalSymbol().startIndex]
-                currentOperand.insert(char, atIndex: currentOperand.endIndex.advancedBy(-2))
+                currentOperand.insert(char, at: currentOperand.index(currentOperand.startIndex, offsetBy: -2))
             }
         } else {
             currentOperand = resetOperand()
@@ -72,7 +84,7 @@ class CalculatorProcessor {
     }
     
     func addDecimal() -> String {
-        if currentOperand.rangeOfString(decimalSymbol()) == nil {
+        if currentOperand.range(of: decimalSymbol()) == nil {
             currentOperand += decimalSymbol()
         }
         return currentOperand
@@ -110,7 +122,7 @@ class CalculatorProcessor {
             default:
                 break
             }
-            currentOperand = formatValue(output)
+            currentOperand = formatValue(value: output)
         }
         previousOperand = resetOperand()
         storedOperator = .Equal
@@ -131,7 +143,7 @@ class CalculatorProcessor {
     private func resetOperand() -> String {
         var operand = "0"
         if automaticDecimal {
-            operand = convertOperandToDecimals(operand)
+            operand = convertOperandToDecimals(operand: operand)
         }
         return operand
     }
@@ -146,12 +158,12 @@ class CalculatorProcessor {
             raw = String(format: "%.2f", value)
             return raw
         } else {
-            var end = raw.endIndex.predecessor()
+            var end = raw.index(before: raw.endIndex)
             var foundDecimal = false
-            while end != raw.startIndex && (raw[end] == "0" || isDecimal(raw[end])) && !foundDecimal {
-                foundDecimal = isDecimal(raw[end])
-                raw.removeAtIndex(end)
-                end = end.predecessor()
+            while end != raw.startIndex && (raw[end] == "0" || isDecimal(char: raw[end])) && !foundDecimal {
+                foundDecimal = isDecimal(char: raw[end])
+                raw.remove(at: end)
+                end = raw.index(before: raw.endIndex)
             }
             return raw
         }
