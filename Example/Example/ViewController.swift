@@ -15,14 +15,14 @@ class ViewController: UIViewController, CalculatorDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: 300)
+        let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300)
         let keyboard = CalculatorKeyboard(frame: frame)
         keyboard.delegate = self
         keyboard.showDecimal = true
         inputTextField.inputView = keyboard
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         inputTextField.becomeFirstResponder()
     }
@@ -32,7 +32,7 @@ class ViewController: UIViewController, CalculatorDelegate {
     }
     
     // MARK: - RFCalculatorKeyboard delegate
-    func calculator(calculator: CalculatorKeyboard, didChangeValue value: String) {
+    func calculator(_ calculator: CalculatorKeyboard, didChangeValue value: String) {
         inputTextField.text = value
     }
 }

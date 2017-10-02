@@ -9,64 +9,64 @@
 import UIKit
 
 public protocol CalculatorDelegate: class {
-    func calculator(calculator: CalculatorKeyboard, didChangeValue value: String)
+    func calculator(_ calculator: CalculatorKeyboard, didChangeValue value: String)
 }
 
 enum CalculatorKey: Int {
-    case Zero = 1
-    case One
-    case Two
-    case Three
-    case Four
-    case Five
-    case Six
-    case Seven
-    case Eight
-    case Nine
-    case Decimal
-    case Clear
-    case Delete
-    case Multiply
-    case Divide
-    case Subtract
-    case Add
-    case Equal
+    case zero = 1
+    case one
+    case two
+    case three
+    case four
+    case five
+    case six
+    case seven
+    case eight
+    case nine
+    case decimal
+    case clear
+    case delete
+    case multiply
+    case divide
+    case subtract
+    case add
+    case equal
 }
 
-public class CalculatorKeyboard: UIView {
-    public weak var delegate: CalculatorDelegate?
-    public var numbersBackgroundColor = UIColor(white: 0.97, alpha: 1.0) {
+open class CalculatorKeyboard: UIView {
+    open weak var delegate: CalculatorDelegate?
+    open var numbersBackgroundColor = UIColor(white: 0.97, alpha: 1.0) {
         didSet {
             adjustLayout()
         }
     }
-    public var numbersTextColor = UIColor.blackColor() {
+    open var numbersTextColor = UIColor.black {
         didSet {
             adjustLayout()
         }
     }
-    public var operationsBackgroundColor = UIColor(white: 0.75, alpha: 1.0) {
+    open var operationsBackgroundColor = UIColor(white: 0.75, alpha: 1.0) {
         didSet {
             adjustLayout()
         }
     }
-    public var operationsTextColor = UIColor.whiteColor() {
+    open var operationsTextColor = UIColor.white {
         didSet {
             adjustLayout()
         }
     }
-    public var equalBackgroundColor = UIColor(red:0.96, green:0.5, blue:0, alpha:1) {
+    open var equalBackgroundColor = UIColor(red:0.96, green:0.5, blue:0, alpha:1) {
         didSet {
             adjustLayout()
         }
     }
-    public var equalTextColor = UIColor.whiteColor() {
+    open var equalTextColor = UIColor.white {
         didSet {
             adjustLayout()
         }
     }
     
-    public var showDecimal = true {
+    open var showDecimal = true {
         didSet {
             processor.automaticDecimal = !showDecimal
             adjustLayout()
@@ -74,7 +74,7 @@ public class CalculatorKeyboard: UIView {
     }
     
     var view: UIView!
-    private var processor = CalculatorProcessor()
+    fileprivate var processor = CalculatorProcessor()
     
     @IBOutlet weak var zeroDistanceConstraint: NSLayoutConstraint!
     
@@ -88,77 +88,77 @@ public class CalculatorKeyboard: UIView {
         loadXib()
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         adjustLayout()
     }
     
-    private func loadXib() {
+    fileprivate func loadXib() {
         view = loadViewFromNib()
         view.frame = bounds
-        view.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         adjustLayout()
         addSubview(view)
     }
     
-    private func loadViewFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+    fileprivate func loadViewFromNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "CalculatorKeyboard", bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         adjustButtonConstraint()
         return view
     }
     
-    private func adjustLayout() {
-        if viewWithTag(CalculatorKey.Decimal.rawValue) != nil {
+    fileprivate func adjustLayout() {
+        if viewWithTag(CalculatorKey.decimal.rawValue) != nil {
             adjustButtonConstraint()
         }
         
-        for var i = 1; i <= CalculatorKey.Decimal.rawValue; i++ {
+        for i in 1...CalculatorKey.decimal.rawValue {
             if let button = self.view.viewWithTag(i) as? UIButton {
                 button.tintColor = numbersBackgroundColor
-                button.setTitleColor(numbersTextColor, forState: .Normal)
+                button.setTitleColor(numbersTextColor, for: UIControlState())
             }
         }
         
-        for var i = CalculatorKey.Clear.rawValue; i <= CalculatorKey.Add.rawValue; i++ {
+        for i in CalculatorKey.clear.rawValue...CalculatorKey.add.rawValue {
             if let button = self.view.viewWithTag(i) as? UIButton {
                 button.tintColor = operationsBackgroundColor
-                button.setTitleColor(operationsTextColor, forState: .Normal)
+                button.setTitleColor(operationsTextColor, for: UIControlState())
                 button.tintColor = operationsTextColor
             }
         }
         
-        if let button = self.view.viewWithTag(CalculatorKey.Equal.rawValue) as? UIButton {
+        if let button = self.view.viewWithTag(CalculatorKey.equal.rawValue) as? UIButton {
             button.tintColor = equalBackgroundColor
-            button.setTitleColor(equalTextColor, forState: .Normal)
+            button.setTitleColor(equalTextColor, for: UIControlState())
         }
     }
     
-    private func adjustButtonConstraint() {
-        let width = UIScreen.mainScreen().bounds.width / 4.0
+    fileprivate func adjustButtonConstraint() {
+        let width = UIScreen.main.bounds.width / 4.0
         zeroDistanceConstraint.constant = showDecimal ? width + 2.0 : 1.0
         layoutIfNeeded()
     }
     
-    @IBAction func buttonPressed(sender: UIButton) {
+    @IBAction func buttonPressed(_ sender: UIButton) {
         switch (sender.tag) {
-        case (CalculatorKey.Zero.rawValue)...(CalculatorKey.Nine.rawValue):
+        case (CalculatorKey.zero.rawValue)...(CalculatorKey.nine.rawValue):
             let output = processor.storeOperand(sender.tag-1)
             delegate?.calculator(self, didChangeValue: output)
-        case CalculatorKey.Decimal.rawValue:
+        case CalculatorKey.decimal.rawValue:
             let output = processor.addDecimal()
             delegate?.calculator(self, didChangeValue: output)
-        case CalculatorKey.Clear.rawValue:
+        case CalculatorKey.clear.rawValue:
             let output = processor.clearAll()
             delegate?.calculator(self, didChangeValue: output)
-        case CalculatorKey.Delete.rawValue:
+        case CalculatorKey.delete.rawValue:
             let output = processor.deleteLastDigit()
             delegate?.calculator(self, didChangeValue: output)
-        case (CalculatorKey.Multiply.rawValue)...(CalculatorKey.Add.rawValue):
+        case (CalculatorKey.multiply.rawValue)...(CalculatorKey.add.rawValue):
             let output = processor.storeOperator(sender.tag)
             delegate?.calculator(self, didChangeValue: output)
-        case CalculatorKey.Equal.rawValue:
+        case CalculatorKey.equal.rawValue:
             let output = processor.computeFinalValue()
             delegate?.calculator(self, didChangeValue: output)
             break
